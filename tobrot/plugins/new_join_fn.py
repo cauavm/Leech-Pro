@@ -33,10 +33,10 @@ async def help_message_f(client, message):
         utxt = "Streamable"
     await message.reply_text(
         f"""Comandos disponíveis
-/{RCLONE_COMMAND} : This will change your drive config on fly.(First one will be default)
+/{RCLONE_COMMAND} : Mudar configurações do Drive (**BLOQUEADO**)
  
-/{CLONE_COMMAND_G}: This command is used to clone gdrive files or folder using gclone.
-Syntax:- `[ID of the file or folder][one space][name of your folder only(If the id is of file, don't put anything)]` and then reply /gclone to it.
+/{CLONE_COMMAND_G}: Este comando é usadado para clonear os arquivos ou pasta do Google Drive utilizando o Gclone
+Sintaxe:- `[ID do arquivo ou da pasta][espaço][nome da sua pasta(se o ID é do arquivo, não coloque nada)]` e então responda /gclone.
  
 /{LOG_COMMAND}: Gerar logs.
  
@@ -72,15 +72,15 @@ Syntax:- `[ID of the file or folder][one space][name of your folder only(If the 
 
 /{RENAME_COMMAND}: Renomear arquivos do Telegram.
  
-Only work with direct link and youtube link for nowIt is like u can add custom name as prefix of the original file name. Like if your file name is gk.txt uploaded will be what u add in CUSTOM_FILE_NAME + gk.txt
+Funciona apenas com links diretos e links do YouTube agora. É como você poder adicionar um prefixo customizado para o nome do arquivo original. Por exemplo, se eu arquivo é gk.txt, será o que você adicionar em CUSTOM_FILE_NAME + gk.txt
+
+Funciona apenas com link direto/YouTube. Não funciona com Magnet Link ou Arquivo Torrent.
+
+E também adicinou nomes personalizados, como...
  
-Only works with direct link/youtube link.No magnet or torrent.
- 
-And also added custom name like...
- 
-You have to pass link as www.download.me/gk.txt | new.txt
- 
-the file will be uploaded as new.txt.
+Você deve passar o link como www.download.me/gk.txt | novo.txt
+
+o arquivo será upado como novo.txt
  
 /{SAVE_THUMBNAIL}: Utilize em resposta a uma Foto para salvar como uma Thumbnail Personalizada.
 
@@ -90,10 +90,10 @@ the file will be uploaded as new.txt.
 
 /{TOGGLE_DOC}: Fazer o upload do arquivo como Documento
 
-**How to Use....?**
-__Send any one of the available command, as a reply to a valid link/magnet/torrent. 👊__
+**Como utilizar....?**
+__Envie qualquer um dos comandos disponíveis como resposta para um link/magnet/torrent. 👊__
 
-**Current Custom Upload Mode:** `{utxt}`
+**Modo de Upload atual:** `{utxt}`
 
 """,
         disable_web_page_preview=True,

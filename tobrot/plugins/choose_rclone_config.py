@@ -14,7 +14,7 @@ from tobrot import LOGGER, OWNER_ID
 
 
 async def rclone_command_f(client, message):
-    """/rclone command"""
+    """/rclone comando"""
     LOGGER.info(
         f"rclone command from chatid:{message.chat.id}, userid:{message.from_user.id}"
     )
@@ -45,9 +45,9 @@ please choose which section you want to use:"""
         reply_markup = pyrogram.InlineKeyboardMarkup(inline_keyboard)
         await message.reply_text(text=msg_text, reply_markup=reply_markup)
     else:
-        await message.reply_text("You have no permission!")
+        await message.reply_text("Você não tem permissão!")
         LOGGER.warning(
-            f"uid={message.from_user.id} have no permission to edit rclone config!"
+            f"uid={message.from_user.id} não tem permissão para editar o rclone config!"
         )
 
 
@@ -58,10 +58,10 @@ async def rclone_button_callback(bot, update: CallbackQuery):
         config.read("rclone.conf")
         section = config.sections()[0]
         await update.message.edit_text(
-            f"Opration canceled! \n\nThe default section of rclone config is: **{section}**"
+            f"Operação cancelada! \n\nA seção padrão de configuração do Rclone é: **{section}**"
         )
         LOGGER.info(
-            f"Opration canceled! The default section of rclone config is: {section}"
+            f"Operação cancelada! A seção padrão de configuração do Rclone é: {section}"
         )
     else:
         section = update.data.split("_", maxsplit=1)[1]

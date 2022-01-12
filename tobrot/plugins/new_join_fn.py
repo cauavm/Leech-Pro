@@ -10,7 +10,7 @@ async def new_join_f(client, message):
     chat_type = message.chat.type
     if chat_type != "private":
         await message.reply_text(
-            f"""<b>🙋🏻‍♂️ Hello dear!\n\n This Is A Leech Bot .This Chat Is Not Supposed To Use Me</b>\n\n<b>Current CHAT ID: <code>{message.chat.id}</code>""",
+            f"""<b>🙋🏻‍♂️ Olá!\n\n Esse é um bot de downloads do @animezey. O uso do bot é permitido apenas no grupo.</b>\n\n<b>Current CHAT ID: <code>{message.chat.id}</code>""",
             parse_mode="html",
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -54,11 +54,11 @@ Syntax:- `[ID of the file or folder][one space][name of your folder only(If the 
  
 /{GLEECH_COMMAND}: This command should be used as reply to a magnetic link, a torrent link, or a direct link. And this will download the files from the given link or torrent and will upload to the cloud using rclone.
  
-/{GLEECH_ZIP_COMMAND} This command will compress the folder/file and will upload to your cloud.
+/{GLEECH_ZIP_COMMAND} Este comando irá comprimir a pasta/arquivo e fazer o upload para o Google Drive.
  
-/{LEECH_UNZIP_COMMAND}: This will unarchive file and upload to telegram.
+/{LEECH_UNZIP_COMMAND}: Descompactar o arquivo e fazer o upload para o Telegram.
  
-/{GLEECH_UNZIP_COMMAND}: This will unarchive file and upload to cloud.
+/{GLEECH_UNZIP_COMMAND}: Descompactar o arquivo e fazer o upload para o Google Drive.
  
 /{TELEGRAM_LEECH_COMMAND}: This will mirror the telegram files to ur respective cloud .
  

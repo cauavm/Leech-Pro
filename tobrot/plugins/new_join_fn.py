@@ -10,7 +10,7 @@ async def new_join_f(client, message):
     chat_type = message.chat.type
     if chat_type != "private":
         await message.reply_text(
-            f"""<b>🙋🏻‍♂️ Olá!\n\n Esse é um bot de downloads do @animezey. O uso do bot é permitido apenas no grupo.</b>\n\n<b>Current CHAT ID: <code>{message.chat.id}</code>""",
+            f"""<b>🙋🏻‍♂️ Olá!\n\n Esse é um bot de Downloads do @animezey. O uso do bot é permitido apenas no grupo.</b>\n\n<b>Current CHAT ID: <code>{message.chat.id}</code>""",
             parse_mode="html",
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -35,7 +35,7 @@ async def help_message_f(client, message):
         f"""Comandos disponíveis
 /{RCLONE_COMMAND} : Mudar configurações do Drive (**BLOQUEADO**)
  
-/{CLONE_COMMAND_G}: Este comando é usadado para clonear os arquivos ou pasta do Google Drive utilizando o Gclone
+/{CLONE_COMMAND_G}: Este comando é usado para clonar os arquivos ou pasta do Google Drive utilizando o Gclone
 Sintaxe:- `[ID do arquivo ou da pasta][espaço][nome da sua pasta(se o ID é do arquivo, não coloque nada)]` e então responda /gclone.
  
 /{LOG_COMMAND}: Gerar logs.
@@ -48,17 +48,17 @@ Sintaxe:- `[ID do arquivo ou da pasta][espaço][nome da sua pasta(se o ID é do 
  
 /{GPYTDL_COMMAND}: Baixar playlist do YouTube e fazer o upload para o Google Drive.
  
-/{LEECH_COMMAND}: Este comando deve ser usado em resposta a um Magnet Link, link de Torrent, ou link direto. [Irá gerar SPAM no chat e enviar os downloads como arquivos separados, se houver mais de um arquivo.].
+/{LEECH_COMMAND}: Este comando deve ser usado em resposta a um Magnet Link, Torrent Link, ou Link Direto. [Irá gerar SPAM no chat e enviar os downloads como arquivos separados, se houver mais de um arquivo.].
  
-/{LEECH_ZIP_COMMAND}: Este comando deve ser usaddo em resposta a um Magnet Link, link de Torrent, ou link direto. [Irá criar um arquivo .tar.gz na saída do diretório e enviar os arquivos no chat, dividido em partes de 1024MiB cada, devido a limitações do Telegram]
+/{LEECH_ZIP_COMMAND}: Este comando deve ser usaddo em resposta a um Magnet Link, Torrent Link, ou Link Direto. [Irá criar um arquivo .tar.gz na saída do diretório e enviar os arquivos no chat, dividido em partes de 1024MiB cada, devido a limitações do Telegram]
  
-/{GLEECH_COMMAND}: Este comando deve ser usado em resposta a um Magnet Link, link de Torrent, ou link direto. Irá baixar os arquivos do link ou torrent enviado e irá fazer o upload para o Google Drive usando o Rclone.
+/{GLEECH_COMMAND}: Este comando deve ser usado em resposta a um Magnet Link, Torrent Link, ou Link Direto. Irá baixar os arquivos do link ou torrent enviado e irá fazer o upload para o Google Drive usando o Rclone.
  
 /{GLEECH_ZIP_COMMAND} Este comando irá comprimir a pasta/arquivo e fazer o upload para o Google Drive.
  
-/{LEECH_UNZIP_COMMAND}: Descompactar o arquivo e fazer o upload para o Telegram.
+/{LEECH_UNZIP_COMMAND}: Descompactar o arquivo e fazer o Upload para o Telegram.
  
-/{GLEECH_UNZIP_COMMAND}: Descompactar o arquivo e fazer o upload para o Google Drive.
+/{GLEECH_UNZIP_COMMAND}: Descompactar o arquivo e fazer o Upload para o Google Drive.
  
 /{TELEGRAM_LEECH_COMMAND}: Fazer um Mirror do arquivo do Telegram para o Google Drive.
  

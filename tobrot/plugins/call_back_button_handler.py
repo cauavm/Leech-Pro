@@ -76,21 +76,21 @@ async def button(bot, update: CallbackQuery):
                         else:
                             os.remove(file_name)
                     await i_m_s_e_g.edit_text(
-                        f"Leech Cancelled by <a href='tg://user?id={update.from_user.id}'>{update.from_user.first_name}</a>"
+                        f"Leech cancelado por <a href='tg://user?id={update.from_user.id}'>{update.from_user.first_name}</a>"
                     )
                 except Exception as e:
                     await i_m_s_e_g.edit_text("<i>FAILED</i>\n\n" + str(e) + "\n#error")
         else:
             await bot.answer_callback_query(
                 callback_query_id=update.id,
-                text="who are you? 🤪🤔🤔🤔",
+                text="quem é você? 🤪🤔🤔🤔",
                 show_alert=True,
                 cache_time=0,
             )
     elif cb_data == "fuckingdo":
         if (update.from_user.id in AUTH_CHANNEL) or g:
             await bot.answer_callback_query(
-                update.id, text="trying to delete...", show_alert=False
+                update.id, text="tentando deletar...", show_alert=False
             )
             g_d_list = [
                 "app.json",
@@ -131,11 +131,11 @@ async def button(bot, update: CallbackQuery):
                         shutil.rmtree(f)
                 await update.message.edit_text(f"Deleted {len(g_del_list)} objects 🚮")
             else:
-                await update.message.edit_text("Nothing to clear 🙄")
+                await update.message.edit_text("Nada para limpar 🙄")
         else:
-            await update.message.edit_text("You are not allowed to do that 🤭")
+            await update.message.edit_text("Você não tem permissão para fazer isso 🤭")
     elif cb_data == "fuckoff":
         await bot.answer_callback_query(
             update.id, text="trying to cancel...", show_alert=False
         )
-        await update.message.edit_text("Okay! fine 🤬")
+        await update.message.edit_text("Okay! legal 🤬")

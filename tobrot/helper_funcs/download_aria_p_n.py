@@ -92,7 +92,7 @@ def add_magnet(aria_instance, magnetic_link, c_file_name):
     except Exception as e:
         return (
             False,
-            "**FAILED** \n" + str(e) + " \n<b> Your link is Dead 🐈</b>",
+            "**FALHOU** \n" + str(e) + " \n<b> Seu link está morto 🐈</b>",
         )
     else:
         return True, "" + download.gid + ""
@@ -102,9 +102,9 @@ def add_torrent(aria_instance, torrent_file_path):
     if torrent_file_path is None:
         return (
             False,
-            "**FAILED** \n"
+            "**FALHOU** \n"
             + str(e)
-            + " \nsomething wrongings when trying to add <u>TORRENT</u> file",
+            + " \nalgo de errado ao tentar adicionar o arquivo <u>TORRENT</u>",
         )
     if os.path.exists(torrent_file_path):
         # Add Torrent Into Queue
@@ -117,12 +117,12 @@ def add_torrent(aria_instance, torrent_file_path):
                 False,
                 "**FAILED** \n"
                 + str(e)
-                + " \n<b> Your Link is Slow Dude 🐈</b>",
+                + " \n<b> Seu link está lento 🐈</b>",
             )
         else:
             return True, "" + download.gid + ""
     else:
-        return False, "**FAILED** \nPlease try other sources to get workable link"
+        return False, "**FALHOU** \nPor favor, tente utilizar outro link funcional"
 
 
 def add_url(aria_instance, text_url, c_file_name):
@@ -151,8 +151,8 @@ def add_url(aria_instance, text_url, c_file_name):
     except Exception as e:
         return (
             False,
-            "**FAILED** \n" +
-            str(e) + " \nPlease do not send SLOW links. Read /help",
+            "**FALHOU** \n" +
+            str(e) + " \nPor favor, não adicione links lentos. Leia /help",
         )
     else:
         return True, "" + download.gid + ""
@@ -197,7 +197,7 @@ async def call_apropriate_function(
                     aria_instance, err_message, sent_message_to_update_tg_p, None
                 )
             else:
-                return False, "can't get metadata \n\n#MetaDataError"
+                return False, "não foi possível obter metadados \n\n#MetaDataError"
         await asyncio.sleep(1)
         try:
             file = aria_instance.get_download(err_message)
@@ -226,7 +226,7 @@ async def call_apropriate_function(
         except Exception as ge:
             LOGGER.info(ge)
             LOGGER.info(
-                f"Can't extract {os.path.basename(to_upload_file)}, Uploading the same file"
+                f"Não foi possível extrair {os.path.basename(to_upload_file)}, fazendo o Upload do mesmo arquivo"
             )
 
     if to_upload_file:
@@ -277,12 +277,12 @@ async def call_apropriate_function(
                     message_to_send += "\n"
                 if message_to_send != "":
                     mention_req_user = (
-                        f"<a href='tg://user?id={user_id}'>Your Requested Files</a>\n\n"
+                        f"<a href='tg://user?id={user_id}'>Seus arquivos solicitados</a>\n\n"
                     )
                     message_to_send = mention_req_user + message_to_send
                     message_to_send = message_to_send + "\n\n" + "#uploads"
                 else:
-                    message_to_send = "<i>FAILED</i> to upload files. 😞😞"
+                    message_to_send = "<i>FALHA</i> ao fazer upload dos arquivos. 😞😞"
                 await user_message.reply_text(
                     text=message_to_send, quote=True, disable_web_page_preview=True
                 )
@@ -307,10 +307,10 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 if not file.error_message:
                     if file.has_failed:
                         LOGGER.info(
-                            f"Cancelling downloading of {file.name} may be due to slow torrent"
+                            f"Cancelando o Download de {file.name}, pode ser devido ao Torrent estar lento"
                         )
                         await event.reply(
-                            f"Download cancelled :\n<code>{file.name}</code>\n\n #MetaDataError", quote=True
+                            f"Download cancelado :\n<code>{file.name}</code>\n\n #MetaDataError", quote=True
                         )
                         file.remove(force=True, files=True)
                         return
@@ -324,17 +324,17 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 # await check_progress_for_dl(aria2, gid, event, previous_message)
             else:
                 LOGGER.info(
-                    f"Downloaded Successfully: `{file.name} ({file.total_length_string()})` 🤒"
+                    f"Download com Sucesso: `{file.name} ({file.total_length_string()})` 🤒"
                 )
                 # await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
                 if not file.is_metadata:
                     await event.edit(
-                        f"**Status:** `Downloaded ✅`\n\n**📝 FileName:** `{file.name}`\n\n**📎 Total Size:** `({file.total_length_string()})` \n\n#Downloaded"
+                        f"**Status:** `Baixado ✅`\n\n**📝 Nome do Arquivo:** `{file.name}`\n\n**📎 Tamanho Total:** `({file.total_length_string()})` \n\n#Downloaded"
                     )
                 return
         except aria2p.client.ClientException:
             await event.reply(
-                f"Download cancelled :\n<code>{file.name} ({file.total_length_string()})</code>", quote=True
+                f"Download cancelado :\n<code>{file.name} ({file.total_length_string()})</code>", quote=True
             )
             return
         except MessageNotModified as ep:
@@ -349,7 +349,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
             LOGGER.info(str(e))
             if "not found" in str(e) or "'file'" in str(e):
                 await event.edit(
-                    f"Download cancelled :\n<code>{file.name} ({file.total_length_string()})</code>"
+                    f"Download cancelado :\n<code>{file.name} ({file.total_length_string()})</code>"
                 )
                 return
             else:

@@ -60,7 +60,7 @@ async def split_large_files(input_file):
                     input_file, output_file, str(start_time), str(end_time)
                 )
             )
-            LOGGER.info(f"Start time {start_time}, End time {end_time}, Itr {i}")
+            LOGGER.info(f"Tempo de início {start_time}, Tempo final {end_time}, Itr {i}")
 
             # adding offset of 3 seconds to ensure smooth playback
             start_time = end_time - 3

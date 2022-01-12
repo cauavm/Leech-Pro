@@ -40,12 +40,12 @@ from tobrot.UserDynaConfig import UserDynaConfig
 
 async def upload_as_doc(client, message):
     user_specific_config[message.from_user.id]=UserDynaConfig(message.from_user.id,True)
-    await message.reply_text("**🗞 Your Files Will Be Uploaded As Document 📁**")
+    await message.reply_text("**🗞 Seus Arquivos serão Upados como Documentos 📁**")
 
 
 async def upload_as_video(client, message):
     user_specific_config[message.from_user.id]=UserDynaConfig(message.from_user.id,False)
-    await message.reply_text("**🗞 Your Files Will Be Uploaded As Streamable 🎞**")
+    await message.reply_text("**🗞 eus Arquivos serão Upados como Streamável 🎞**")
  
 
 async def status_message_f(
@@ -88,11 +88,11 @@ async def status_message_f(
                 msg += f"<b>════════════════════════════════</b>\n"
                 msg += f"\n<b>{downloading_dir_name}</b>"
                 msg += f"\n<b>{prog}</b>"
-                msg += f"\n<b>Speed</b>: {file.download_speed_string()}"
+                msg += f"\n<b>Velocidade</b>: {file.download_speed_string()}"
                 msg += f"\n<b>Status</b>: {file.progress_string()} <b>of</b> {file.total_length_string()}"
                 msg += f"\n<b>ETA:</b> {file.eta_string()}"
                 msg += f"\n{msgg}"
-                msg += f"\n<b>To Cancel:</b> <code>/cancel {file.gid}</code>"
+                msg += f"\n<b>Cancelar:</b> <code>/cancel {file.gid}</code>"
                 msg += "\n"
 
         hr, mi, se = up_time(time.time() - BOT_START_TIME)
@@ -109,7 +109,7 @@ async def status_message_f(
             f"<b>RAM:</b> <code>{ram}%</code> <b>CPU:</b> <code>{cpu}%</code>\n"
         )
         if msg == "":
-            msg = "🤷‍♂️ No Active, Queued or Paused TORRENTs"
+            msg = "🤷‍♂️ Não há Torrents na fila, ativos ou pausados"
             msg = ms_g + "\n" + msg
             await to_edit.edit(msg)
             break
@@ -158,7 +158,7 @@ async def cancel_message_f(client, message):
                 f"Download cancelled :\n<code>{name} ({size})</code> by <a href='tg://user?id={message.from_user.id}'>{message.from_user.first_name}</a>"
             )
         except Exception as e:
-            await i_m_s_e_g.edit_text("<i>FAILED</i>\n\n" + str(e) + "\n#error")
+            await i_m_s_e_g.edit_text("<i>FALHOU</i>\n\n" + str(e) + "\n#error")
     else:
         await message.delete()
 
@@ -205,7 +205,7 @@ async def exec_message_f(client, message):
 
 
 async def upload_document_f(client, message):
-    imsegd = await message.reply_text("processing ...")
+    imsegd = await message.reply_text("processando ...")
     if message.from_user.id in AUTH_CHANNEL:
         if " " in message.text:
             recvd_command, local_file_name = message.text.split(" ", 1)
@@ -218,7 +218,7 @@ async def upload_document_f(client, message):
 
 async def eval_message_f(client, message):
     if message.from_user.id in AUTH_CHANNEL:
-        status_message = await message.reply_text("Processing ...")
+        status_message = await message.reply_text("Processando ...")
         cmd = message.text.split(" ", maxsplit=1)[1]
 
         reply_to_id = message.message_id
@@ -249,7 +249,7 @@ async def eval_message_f(client, message):
         elif stdout:
             evaluation = stdout
         else:
-            evaluation = "Success"
+            evaluation = "Successo"
 
         final_output = (
             "<b>EVAL</b>: <code>{}</code>\n\n<b>OUTPUT</b>:\n<code>{}</code> \n".format(

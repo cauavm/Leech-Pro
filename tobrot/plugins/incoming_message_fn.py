@@ -37,7 +37,7 @@ from tobrot.helper_funcs.ytplaylist import yt_playlist_downg
 
 
 async def incoming_purge_message_f(client, message):
-    """/purge command"""
+    """comando /purge"""
     print(message.client)
     i_m_sefg2 = await message.reply_text("Purging...", quote=True)
     if await AdminCheck(client, message.chat.id, message.from_user.id):
@@ -50,7 +50,7 @@ async def incoming_purge_message_f(client, message):
 
 
 async def incoming_message_f(client, message):
-    """/leech command or /gleech command"""
+    """comando /leech ou comando /gleech"""
     user_command = message.command[0]
     g_id = message.from_user.id
     # get link from the incoming message
@@ -70,7 +70,7 @@ async def incoming_message_f(client, message):
             LOGGER.info(cf_name)
         else:
             if user_command == LEECH_COMMAND.lower():
-                await i_m_sefg.edit("No download source provided 🙄")
+                await i_m_sefg.edit("Nenhuma fonte de Download providenciada 🙄")
                 return
             is_file = True
             dl_url = rep_mess
@@ -79,7 +79,7 @@ async def incoming_message_f(client, message):
         LOGGER.info(dl_url)
 
     else:
-        await i_m_sefg.edit("<b>Hey Dude !</b>\n\n 🐈 <code>Reply with Direct /Torrent Link</code>")
+        await i_m_sefg.edit("<b>Hey !</b>\n\n 🐈 <code>Responda com um Link Direto / Link Torrent</code>")
         return
     if dl_url is not None:
 
@@ -98,7 +98,7 @@ async def incoming_message_f(client, message):
             aria_i_p = await aria_start()
             # LOGGER.info(aria_i_p)
 
-        await i_m_sefg.edit_text("Added to downloads. Send /status")
+        await i_m_sefg.edit_text("Adicionado aos Downloads. Envie /status")
         # try to download the "link"
         is_zip = False
         is_cloud = False
@@ -140,7 +140,7 @@ async def incoming_message_f(client, message):
 
 
 async def incoming_youtube_dl_f(client, message):
-    """ /ytdl command """
+    """ Comando /ytdl """
     current_user_id = message.from_user.id
 
     i_m_sefg = await message.reply_text("<code>Prrocessing...🔃</code>", quote=True)
@@ -163,7 +163,7 @@ async def incoming_youtube_dl_f(client, message):
         await i_m_sefg.edit("<b>🐈 Oops Reply To YTDL Supported Link.</b>")
         return
     if dl_url is not None:
-        await i_m_sefg.edit_text("Extracting Links...")
+        await i_m_sefg.edit_text("Extraindo Links...")
         # create an unique directory
         user_working_dir = os.path.join(DOWNLOAD_LOCATION, str(current_user_id))
         # create download directory, if not exist
@@ -197,7 +197,7 @@ async def incoming_youtube_dl_f(client, message):
 
 # playlist
 async def g_yt_playlist(client, message):
-    """ /pytdl command """
+    """ Comando /pytdl """
     user_command = message.command[0]
     usr_id = message.from_user.id
     is_cloud = False
@@ -211,24 +211,24 @@ async def g_yt_playlist(client, message):
         if user_command == GPYTDL_COMMAND.lower():
             is_cloud = True
     else:
-        await message.reply_text("<b> Reply with Youtube Playlist link</b>", quote=True)
+        await message.reply_text("<b> Responda com Link de Playlist do YouTube</b>", quote=True)
         return
     if "youtube.com/playlist" in url:
         u_men = message.from_user.mention
         i_m_sefg = await message.reply_text(
-            f"<b>Ok Fine 🐈 {u_men} Bro!!:\n Your Request has been ADDED</b>\n\n <code> Please wait until Upload</code>",
+            f"<b>Ok 🐈 {u_men} Opa!!:\n Seu pedido foi ADICIONADO</b>\n\n <code> Por favor, espere até o Upload</code>",
             parse_mode="html",
         )
         await yt_playlist_downg(message, i_m_sefg, client, is_cloud)
 
     else:
-        await message.reply_text("<b>YouTube playlist link only 🙄</b>", quote=True)
+        await message.reply_text("<b>Apenas Links de Playlists do YouTube 🙄</b>", quote=True)
 
  #
 
 
 async def g_clonee(client, message):
-    """ /gclone command """
+    """ Comando /gclone """
     g_id = message.from_user.id
     if message.reply_to_message is not None:
         LOGGER.info(message.reply_to_message.text)

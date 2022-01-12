@@ -45,7 +45,7 @@ async def upload_as_doc(client, message):
 
 async def upload_as_video(client, message):
     user_specific_config[message.from_user.id]=UserDynaConfig(message.from_user.id,False)
-    await message.reply_text("**🗞 eus Arquivos serão Upados como Streamável 🎞**")
+    await message.reply_text("**🗞 Seus Arquivos serão Upados como Streamável 🎞**")
  
 
 async def status_message_f(
